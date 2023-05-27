@@ -22,10 +22,12 @@ productoCtrl.createProducto = async (req, res) => {
         })
     }
 }
+
 productoCtrl.getProducto = async (req, res) => {
     const producto = await Producto.findById(req.params.id);
     res.json(producto);
 }
+
 productoCtrl.editProducto = async (req, res) => {
     const vproducto = new Producto(req.body);
     try {
@@ -41,6 +43,7 @@ productoCtrl.editProducto = async (req, res) => {
         })
     }
 }
+
 productoCtrl.deleteProducto = async (req, res) => {
     try {
         await Producto.deleteOne({ _id: req.params.id });
@@ -55,4 +58,11 @@ productoCtrl.deleteProducto = async (req, res) => {
         })
     }
 }
+
+productoCtrl.getProductosDestacados = async (req,res) => {
+    var productosDestacados = await Producto.find({destacado:true});
+    res.json(productosDestacados);
+}
+
+
 module.exports = productoCtrl;

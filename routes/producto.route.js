@@ -9,5 +9,6 @@ router.post('/', productoCtrl.createProducto);
 router.get('/:id', productoCtrl.getProducto);
 router.put('/:id', productoCtrl.editProducto);
 router.delete('/:id', productoCtrl.deleteProducto);
+router.get('/productos/destacados',productoCtrl.getProductosDestacados);
 //exportamos el modulo de rutas
 module.exports = router;
