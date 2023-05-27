@@ -32,9 +32,9 @@ ticketCtrl.createTicket = async (req, res) => {
     }
 }
 
-ticketCtrl.getTicket = async (req, res) => { 
+ticketCtrl.getTicket = async (req, res) => {
     //no pide esta pero igual la pongo, para recordar
-    const ticket = await Ticket.findById(req.params.id);
+    const ticket = await Ticket.findById(req.params.id).populate("espectador");
     res.json(ticket);
 }
 
@@ -70,18 +70,19 @@ ticketCtrl.deleteTicket = async (req, res) => {
     }
 }
 
-ticketCtrl.getEspectadoresPorCategoria = async (req,res) => {
-    const {categoria} = req.params;
+ticketCtrl.getEspectadoresPorCategoria = async (req, res) => {
+    const { cat } = req.params;
 
-    try{
-        
+    console.log(cat);
+
+    try {
         const tickets = await Ticket.find({
-            categoriaEspectador: categoria
-        })
+            categoriaEspectador: cat
+        });
 
         res.json(tickets);
-    }catch(error){
-        res.status(500).json({error: 'Error al obtener tickets por la categoria: '}, categoria)
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los tickets por categoria del espectador' })
     }
 }
 
