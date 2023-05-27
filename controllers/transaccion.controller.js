@@ -37,12 +37,12 @@ transaccionCtrl.getTransaccionesDeUnCliente = async (req, res) => {
 }
 
 transaccionCtrl.getTransaccionesPorMonedas = async (req,res) => {
-    const {monedaO, monedaD } = req.params;
+    const {monedaO, monedaD } = req.params; //se tienen que llamar tal cual como estan en transaccion.route
 
     try{
         const transacciones = await Transaccion.find({
-            monedaOrigen: monedaO.toUpperCase(),
-            monedaDestino: monedaD.toUpperCase()
+            monedaOrigen: monedaO,
+            monedaDestino: monedaD
         });
         res.json(transacciones);
     }catch(error){

@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', transaccionCtrl.getTransacciones); //se va a llamar-> http://localhost:3000/api/transaccion/
 router.post('/', transaccionCtrl.createTransaccion);
 router.get('/:email', transaccionCtrl.getTransaccionesDeUnCliente);
-router.get('/:monedaOrigen/:monedaDestino',transaccionCtrl.getTransaccionesPorMonedas);
+router.get('/:monedaO/:monedaD',transaccionCtrl.getTransaccionesPorMonedas);
 
 // //no estan
 // router.delete('/:id', transaccionCtrl.deleteTransaccion);
