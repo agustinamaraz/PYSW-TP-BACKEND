@@ -50,5 +50,20 @@ transaccionCtrl.getTransaccionesPorMonedas = async (req,res) => {
     }
 }
 
+transaccionCtrl.deleteTransaccion = async (req, res) => {
+    try {
+        await Transaccion.deleteOne({ _id: req.params.id });
+        res.json({
+            status: '1',
+            msg: 'Transaccion removed'
+        })
+    } catch (error) {
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error procesando la operacion'
+        })
+    }
+}
+
 
 module.exports = transaccionCtrl;

@@ -8,6 +8,7 @@ router.get('/', transaccionCtrl.getTransacciones); //se va a llamar-> http://loc
 router.post('/', transaccionCtrl.createTransaccion);
 router.get('/:email', transaccionCtrl.getTransaccionesDeUnCliente);
 router.get('/:monedaO/:monedaD',transaccionCtrl.getTransaccionesPorMonedas);
+router.delete('/:id',transaccionCtrl.deleteTransaccion);
 
 // //no estan
 // router.delete('/:id', transaccionCtrl.deleteTransaccion);
