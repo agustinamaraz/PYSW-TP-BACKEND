@@ -32,6 +32,7 @@ productoCtrl.editProducto = async (req, res) => {
     const vproducto = new Producto(req.body);
     try {
         await Producto.updateOne({ _id: req.body._id }, vproducto);
+        console.log(vproducto);
         res.json({
             'status': '1',
             'msg': 'Producto updated'
